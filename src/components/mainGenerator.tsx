@@ -13,28 +13,19 @@ export default function MainGenerator() {
   });
 
   function generatePassword() {
-    const charsetAlphabet =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const charsetAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const charsetNumber = "01234567890123456789";
-    const charsetSymbol =
-      "!@#$%^&*()-=_+[]{}|;:',.<>?/";
+    const charsetSymbol = "!@#$%^&*()-=_+[]{}|;:',.<>?/";
 
     let charset = "";
     let content = "";
 
-    if (pwOption.alphabet)
-      charset += charsetAlphabet;
+    if (pwOption.alphabet) charset += charsetAlphabet;
     if (pwOption.number) charset += charsetNumber;
     if (pwOption.symbol) charset += charsetSymbol;
 
-    for (
-      let index = 0;
-      index < pwLength;
-      index++
-    ) {
-      content += charset.charAt(
-        Math.floor(Math.random() * charset.length)
-      );
+    for (let index = 0; index < pwLength; index++) {
+      content += charset.charAt(Math.floor(Math.random() * charset.length));
     }
 
     // Set And Change Password
@@ -58,9 +49,7 @@ export default function MainGenerator() {
             <HeaderLogo />
           </div>
 
-          <p className="mb-6 font-semibold text-secondary">
-            Password Randomizer
-          </p>
+          <p className="mb-6 font-semibold text-secondary">Password Randomizer</p>
 
           <div className="flex flex-row w-full">
             <div className="relative w-full h-12 mr-2">
@@ -68,11 +57,7 @@ export default function MainGenerator() {
                 type="text"
                 // If no value, input text is Password Goes Here
                 // Prevent user to copy if no value, just like first render
-                value={
-                  !password
-                    ? "Password Goes Here"
-                    : password
-                }
+                value={!password ? "Password Goes Here" : password}
                 className="input input-bordered input-accent h-full w-full"
                 readOnly
               />
@@ -84,11 +69,7 @@ export default function MainGenerator() {
               // If no password, disable copy
               disabled={!password ? true : false}
               onClick={() => copyText()}
-              className={`btn mr-2 ${
-                isCopied
-                  ? "btn-accent"
-                  : "btn-secondary"
-              }`}
+              className={`btn mr-2 ${isCopied ? "btn-accent" : "btn-secondary"}`}
             >
               <i className="fa-solid fa-copy"></i>
             </button>
@@ -98,10 +79,7 @@ export default function MainGenerator() {
           {/* ----- SLIDER LENGTH ----- */}
           <div className="w-full mt-8 mb-10">
             <p className="mb-4">
-              Password Length:{" "}
-              <span className="font-bold">
-                {pwLength}
-              </span>
+              Password Length: <span className="font-bold">{pwLength}</span>
             </p>
             <input
               type="range"
@@ -109,11 +87,7 @@ export default function MainGenerator() {
               max="50"
               value={pwLength}
               className="range range-sm"
-              onChange={(e) =>
-                setPwLength(
-                  Number(e.target.value)
-                )
-              }
+              onChange={(e) => setPwLength(Number(e.target.value))}
             />
           </div>
           {/* ----- SLIDER LENGTH ----- */}
@@ -123,9 +97,7 @@ export default function MainGenerator() {
             <div className="form-control">
               {/* (Checkbox Alphabet) */}
               <label className="label cursor-pointer">
-                <span className="label-text mr-4">
-                  With Alphabet?
-                </span>
+                <span className="label-text mr-4">With Alphabet?</span>
                 <input
                   type="checkbox"
                   className="toggle"
@@ -133,8 +105,7 @@ export default function MainGenerator() {
                   onChange={() =>
                     setPwOption({
                       ...pwOption,
-                      alphabet:
-                        !pwOption.alphabet,
+                      alphabet: !pwOption.alphabet,
                     })
                   }
                 />
@@ -142,9 +113,7 @@ export default function MainGenerator() {
 
               {/* (Checkbox Number) */}
               <label className="label cursor-pointer">
-                <span className="label-text mr-4">
-                  With Numeric?
-                </span>
+                <span className="label-text mr-4">With Numeric?</span>
                 <input
                   type="checkbox"
                   className="toggle"
@@ -160,9 +129,7 @@ export default function MainGenerator() {
 
               {/* (Checkbox Symbol) */}
               <label className="label cursor-pointer">
-                <span className="label-text mr-4">
-                  With Symbol?
-                </span>
+                <span className="label-text mr-4">With Symbol?</span>
                 <input
                   type="checkbox"
                   className="toggle"
@@ -180,10 +147,7 @@ export default function MainGenerator() {
           {/* ------ TOGGLE INPUT CHARSET ------ */}
 
           {/* ------ BUTTON GENERATE ------ */}
-          <button
-            onClick={() => generatePassword()}
-            className="btn btn-secondary w-full"
-          >
+          <button onClick={() => generatePassword()} className="btn btn-secondary w-full">
             <i className="fa-solid fa-arrows-rotate translate-y-[1.5px] mr-1" />
             <span>Generate</span>
           </button>
