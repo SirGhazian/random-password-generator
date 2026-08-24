@@ -2,21 +2,21 @@ import { useState } from "react";
 import HeaderLogo from "./headerLogo";
 
 export default function MainGenerator() {
-  let [isCopied, setIsCopied] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
-  let [password, setPassword] = useState("");
-  let [pwLength, setPwLength] = useState(15);
-  let [pwOption, setPwOption] = useState({
+  const [password, setPassword] = useState("");
+  const [pwLength, setPwLength] = useState(15);
+  const [pwOption, setPwOption] = useState({
     alphabet: true,
     number: false,
     symbol: false,
   });
 
   function generatePassword() {
-    let charsetAlphabet =
+    const charsetAlphabet =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let charsetNumber = "01234567890123456789";
-    let charsetSymbol =
+    const charsetNumber = "01234567890123456789";
+    const charsetSymbol =
       "!@#$%^&*()-=_+[]{}|;:',.<>?/";
 
     let charset = "";
